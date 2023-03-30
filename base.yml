@@ -1,0 +1,116 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Global Variables: https://espanso.org/docs/matches/basics/#global-variables
+global_vars:
+  - name: "clipboard"  # https://espanso.org/docs/matches/extensions/#clipboard-extension
+    type: "clipboard"
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  # The dynamic matches are introduced in https://espanso.org/docs/matches/extensions/#date-extension
+  - trigger: ":date"  #today
+    replace: "{{my_date}}"
+    vars:
+      - name: my_date
+        type: date
+        params:
+          format: "%F"
+  - trigger: ":tomo"  # tomorrow
+    replace: "{{my_tomorrow}}"
+    vars:
+      - name: my_tomorrow
+        type: date
+        params:
+          format: "%x"
+          offset: 86400
+  - trigger: ":yest"  # yesterday
+    replace: "{{my_yesterday}}"
+    vars:
+      - name: my_yesterday
+        type: date
+        params:
+          format: "%x"
+          offset: -86400
+          locale: "zh-CH"
+  # Print the current time
+  - trigger: ":time"
+    replace: "{{my_time}}"
+    vars:
+      - name: my_time
+        type: date
+        params: 
+          format: "%HH:%MM:%SS"
+
+  - trigger: ":br"
+    replace: "Best Regards,\n\nZhihai Qu"
+  
+  - trigger: "ther"
+    replace: "there"
+    word: true
+    propagate_case: true
+
+
+
+  # ChatGPT prompt
+  - trigger: "gpt2e"  # translate to english, based on ChatBox
+    replace: "{{2English}}"
+    vars:
+      - name: 2English
+        type: choice
+        params:
+          values:
+            - label: "0_neat"
+              id: "I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My sentence is: \"{{clipboard}}$|$\"."
+            - label: "1_normal"
+              id: "I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements. My sentence is \"$|$\"."
+            - label: "2_details"
+              id: "I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and list the advanced usages in a markdown table. My sentence is \"{{clipboard}}$|$\"."
+            - label: "3_neat_input"
+              id: "I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My sentence is: \"$|$\"."
+            - label: "4_normal_input"
+              id: "I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements. My sentence is \"$|$\"."
+            - label: "5_details_input"
+              id: "I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and list the advanced usages in a markdown table. My sentence is \"$|$\"."
+  # - trigger: "gpt2polish"  # from chatpaper: 
+  #   replace: {{PolishEnglish}}
+  #   var: 
+  #     -name: {{PolishEnglish}}
+  #       type: choice
+  #       params: 
+  #         - label: "Polish"
+  #         - id: "Below is a paragraph from an academic paper. Polish the writing to meet the academic style, improve the spelling, grammar, clarity, concision and overall readability. When neccessary, rewrite the whole sentence. Furthermore, list all modification and explain the reasons to do so in markdown table.{{clipbroad}}"
+
+  - trigger: "gpt2c"  # ChanGPT translate to Chinese.
+    replace: "I want you to act as an Chinese translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in Chinese. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements. In addition, show the non A0-level words in my input language and show their meaning in Chinese through a markdown table. My sentence is: \"{{clipboard}}$|$\"."
+
+  
+  # Markdown and HTML
+  - trigger: ":div"
+    replace: "<div>$|$</div>"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/  
+
+  
+  - trigger: ":localip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
+          trim: false
