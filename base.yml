@@ -64,7 +64,8 @@ matches:
     word: true
     propagate_case: true
 
-
+  # NOTICE: The commands with {{clipbroad}} require the clipboard is not empty.
+  # 注意： 在使用了{{clipbroad}}的代码中需要剪切板中有内容（剪切或者粘贴了一段文字），否则会报错。
 
   # ChatGPT prompt
   - trigger: "gpt2e"  # translate to english, based on ChatBox
@@ -95,14 +96,47 @@ matches:
   #         - label: "Polish"
   #         - id: "Below is a paragraph from an academic paper. Polish the writing to meet the academic style, improve the spelling, grammar, clarity, concision and overall readability. When neccessary, rewrite the whole sentence. Furthermore, list all modification and explain the reasons to do so in markdown table.{{clipbroad}}"
 
+  - trigger: "gpt2aca"
+    replace: "I want you to act as an academician. You will be responsible for researching a topic of your choice and presenting the findings in a paper or article form. Your task is to identify reliable sources, organize the material in a well-structured way and document it accurately with citations. My first suggestion request is \"$|$\""
+
   - trigger: "gpt2c"  # ChanGPT translate to Chinese.
     replace: "I want you to act as an Chinese translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in Chinese. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements. In addition, show the non A0-level words in my input language and show their meaning in Chinese through a markdown table. My sentence is: \"{{clipboard}}$|$\"."
 
+  - trigger: "gpt2mle"
+    replace: "I want you to act as a machine learning engineer. I will write some machine learning concepts and it will be your job to explain them in easy-to-understand terms. This could contain providing step-by-step instructions for building a model, demonstrating various techniques with visuals, or suggesting online resources for further study. My first suggestion request is \"$|$\""
   
+  - trigger: "gpt2proofreader"
+    replace: "I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text. The sentence is \"$|$\""
+
+  - trigger: "gpt2prompt"
+    replace: "I want you to act as a ChatGPT prompt generator, I will send a topic, you have to generate a ChatGPT prompt based on the content of the topic, the prompt should start with \"I want you to act as $|$\", and guess what I might do, and expand the prompt accordingly Describe the content to make it useful."
   # Markdown and HTML
   - trigger: ":div"
     replace: "<div>$|$</div>"
-
+  - trigger: ":para" 
+    replace: "<p>$|$</p>"
+  - trigger: ":h1"
+    replace: "<h1>$|$</h1>"
+  - trigger: ":h2"
+    replace: "<h2>$|$</h2>"
+  - trigger: ":h3"
+    replace: "<h3>$|$</h3>"
+  - trigger: ":anchor"  # a link
+    replace: "<a href=\"$|$\">a link</a>"
+  - trigger: ":link"  # insert a link
+    replace: "<a href=\"$|$\">a link</a>"
+  - trigger: ":line"
+    replace: "<hr>"
+  # - trigger: ":i"
+  #   replace: "<i>$|$</i>"
+  - trigger: ":bold"
+    replace: "<b>$|$</b>"
+  - trigger: ":code"
+    replace: "<code>$|$</code>"
+  - trigger: ":kbd"
+    replace: "<kbd>$|$</kbd>"
+  - trigger: ":iframe"
+    replace: "<iframe src=\"http://www.$|$.com\" width=\"200\", height=\"200\"></iframe>"
   # And much more! For more information, visit the docs: https://espanso.org/docs/  
 
   
