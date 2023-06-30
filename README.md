@@ -33,7 +33,7 @@ Personally, I think the following repositories are useful:
 
 From My Own Experience, It Should be Noted that:
 
-'gpt2e' is not quite friendly for thesis polish and it is recommended to use 'gpt2p' for thesis polishing. Also the translation from 'gpt2e' may be too formal and traditional. If you feel so, you can deleted the label "I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences.".
+'gpt2e' is not quite friendly for thesis polishing and it is recommended to use 'gpt2p' for thesis polishing. Also the translation from 'gpt2e' may be too formal and traditional. If you feel so, you can deleted the label "I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences.".
 
 Also, never expect to use chatgpt to help you write your paper! NEVER!
 
