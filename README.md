@@ -29,4 +29,12 @@ Personally, I think the following repositories are useful:
 - ChatGPT Prompts for Data Science!: https://github.com/travistangvh/ChatGPT-Data-Science-Prompts
 - ChatGPT & Bing AI Prompts: https://github.com/yokoffing/ChatGPT-Prompts
 - ChatGPT-Academic-Prompt: https://github.com/xuhangc/ChatGPT-Academic-Prompt/blob/main/README.md
+- Free trial of Chatgpt4, Claude+, and other interesting gpt: https://poe.com/
 
+From My Own Experience, It Should be Noted that:
+
+'gpt2e' is not quite friendly for thesis polish and it is recommended to use 'gpt2p' for thesis polishing. Also the translation from 'gpt2e' may be too formal and traditional. If you feel so, you can deleted the label "I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences.".
+
+Also, never expect to use chatgpt to help you write your paper! NEVER!
+
+Zhihai Qu and Kunhao Chen commited to this repository.
