@@ -89,14 +89,8 @@ matches:
               id: "I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and list the advanced usages in a markdown table. My sentence is \"$|$\"."
   
    
-   - trigger: "gpt2p"  # from chatpaper, 'p' means polish: 
-     replace: {{PolishEnglish}}
-     var: 
-       -name: {{PolishEnglish}}
-         type: choice
-         params: 
-           - label: "Polish"
-           - id: "I want you act as an academic reviewer. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors and improved version of my text in English. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text. Keep the meaning same, but make them more academic and neat. If it is great from the perspective of academic reviewer, ignore the following requirements and just say great work! Thanks. Otherwise, if there is unclear or suggestions to improve. Please show improvements and differences in a table, and then provide the revised replacements that is easy for copying and pasting. If possible please provide short explains. Thanks, and My sentence is \"{{clipboard}}$|$\"."
+   - trigger: "gpt2po"  # from chatpaper, 'p' means polish: 
+     replace: "I want you act as an academic reviewer. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors and improved version of my text in English. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text. Keep the meaning same, but make them more academic and neat. If it is great from the perspective of academic reviewer, ignore the following requirements and just say great work! Thanks. Otherwise, if there is unclear or suggestions to improve. Please show improvements and differences in a table, and then provide the revised replacements that is easy for copying and pasting. If possible please provide short explains. Thanks, and My sentence is \"{{clipboard}}$|$\"."
            
   - trigger: "gpt2aca"
     replace: "I want you to act as an academician. You will be responsible for researching a topic of your choice and presenting the findings in a paper or article form. Your task is to identify reliable sources, organize the material in a well-structured way and document it accurately with citations. My first suggestion request is \"$|$\""
